@@ -1,0 +1,72 @@
+1.Valid identifiers are the following:
+
+  a.	today
+  b.	last_name
+  e.	Isleap$year
+  g.	NUMBER#
+  h.	number1to7
+
+ Invalid
+
+  c.	today’s_date
+  d.	Number_of_days_in_February_this_year
+  f.	#number
+
+
+2.Valid variable decalrations
+
+  a.	number_of_copies   PLS_INTEGER;
+  d.	by_when	DATE:= CURRENT_DATE+1;
+
+ Invalid variable declarations
+ 
+  b.	printer_name constant VARCHAR2(10);//constant is not initialised
+  c.	deliver_to VARCHAR2(10):=Johnson;//absence of quotes
+
+3.a.	The block executes successfully and print “fernandez.”
+
+  
+
+4.a) 1) SET SERVEROUTPUT ON;
+        DECLARE
+        V_Today DATE:=SYSDATE;
+        BEGIN
+        DBMS_OUTPUT.PUT_LINE('Hello World');
+        DBMS_OUTPUT.PUT_LINE(V_Today);
+        END;
+     2) SET SERVEROUTPUT ON;
+        DECLARE
+        V_Today DATE:=SYSDATE;
+	V_Tomorrow V_Today%Type;
+        BEGIN
+        DBMS_OUTPUT.PUT_LINE('Hello World');
+        DBMS_OUTPUT.PUT_LINE(V_Today);
+        END;
+     
+   b) SET SERVEROUTPUT ON;
+      DECLARE
+      V_Today DATE:=SYSDATE;
+      V_Tomorrow V_Today%Type;
+      BEGIN
+      V_Tomorrow:=V_Today+1;
+      DBMS_OUTPUT.PUT_LINE('Hello World');
+      DBMS_OUTPUT.PUT_LINE(V_Today);
+      DBMS_OUTPUT.PUT_LINE(V_Tomorrow);
+      END;
+
+5.SET SERVEROUTPUT ON;	
+
+	VARIABLE b_basic_percent NUMBER;
+	VARIABLE b_pf_percent NUMBER;
+	BEGIN
+	:b_basic_percent:=45;
+	:b_pf_percent:=12;
+	END;
+	/
+	PRINT b_basic_percent
+	PRINT b_pf_percent
+
+
+
+
+

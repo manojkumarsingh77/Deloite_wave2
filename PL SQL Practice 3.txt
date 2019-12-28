@@ -1,0 +1,133 @@
+1.a)Value of v_weight at position 1=2,Datatype=NUMBER
+  b)Value of v_location at position 1='WesternEurope',Datatype=VARCHAR2
+  c)The value of v_weight at position 2=601,Datatype=NUMBER
+  d)The value of v_message at position 2 is='Product 11001is in stock',Datatype=VARCHAR2
+  e)The value of v_new_locn at position 2 is:It shows an error message as the variable v_new_loc is not declared
+
+2.a)The value of v_customer in the nested block is:201,Datatype=NUMBER
+  b)The value of name in the nested block is:'Unisports',Datatype=VARCHAR2
+  c)The value of v_credit_rating in the nested block is:'GOOD',Datatype=VARCHAR2
+  d)The value of v_customer in the main block is:'Womansport',Datatype=VARCHAR2
+  e)The value of name in the main block is:Error message as name is not declared
+  f)The value of v_credit_rating in the main block is:'EXCELLENT',Datatype=VARCHAR2
+
+3.a)SET SERVEROUTPUT ON;	
+
+	VARIABLE b_basic_percent NUMBER;--First Bind Variable 
+	VARIABLE b_pf_percent NUMBER;--Second Bind Variable
+	BEGIN
+	:b_basic_percent:=45;
+	:b_pf_percent:=12;
+	END;
+	/
+	PRINT b_basic_percent
+	PRINT b_pf_percent
+
+b)SET SERVEROUTPUT ON;	
+
+	VARIABLE b_basic_percent NUMBER;--First Bind Variable 
+	VARIABLE b_pf_percent NUMBER;--Second Bind Variable
+	BEGIN
+	/*Assigning values to the bind
+	varaible*/
+	:b_basic_percent:=45;
+	:b_pf_percent:=12;
+	END;
+	/
+	PRINT b_basic_percent
+	PRINT b_pf_percent
+
+
+c)SET SERVEROUTPUT ON;	
+
+	VARIABLE b_basic_percent NUMBER;--First Bind Variable 
+	VARIABLE b_pf_percent NUMBER;--Second Bind Variable
+	DECLARE
+	v_fname VARCHAR2(15);
+	v_emp_sal NUMBER(10);
+	BEGIN
+	/*Assigning values to the bind
+	varaible*/
+	:b_basic_percent:=45;
+	:b_pf_percent:=12;
+	END;
+	/
+	PRINT b_basic_percent
+	PRINT b_pf_percent
+
+
+
+d)SET SERVEROUTPUT ON;	
+
+	VARIABLE b_basic_percent NUMBER;--First Bind Variable 
+	VARIABLE b_pf_percent NUMBER;--Second Bind Variable
+	DECLARE
+	v_fname VARCHAR2(15);
+	v_emp_sal NUMBER(10);
+	BEGIN
+	/*Assigning values to the bind
+	varaible*/
+	:b_basic_percent:=45;
+	:b_pf_percent:=12;
+	SELECT first_name, salary 
+	INTO v_fname, v_emp_sal FROM employees 
+	WHERE employee_id=110;
+	DBMS_OUTPUT.PUT_LINE(v_fname||' '||v_emp_sal);
+	END;
+	/
+	PRINT b_basic_percent
+	PRINT b_pf_percent
+
+
+
+
+e)SET SERVEROUTPUT ON;	
+
+	VARIABLE b_basic_percent NUMBER;
+	VARIABLE b_pf_percent NUMBER;
+	DECLARE
+	v_fname VARCHAR2(15);
+	v_emp_sal NUMBER(10);
+	BEGIN
+	:b_basic_percent:=45;
+	:b_pf_percent:=12;
+	SELECT first_name, salary 
+	INTO v_fname, v_emp_sal FROM employees 
+	WHERE employee_id=110;
+	DBMS_OUTPUT.PUT_LINE('Hello'||' '||v_fname);
+	END;
+	/
+	PRINT b_basic_percent
+	PRINT b_pf_percent
+
+
+
+
+
+f)SET SERVEROUTPUT ON;	
+
+	VARIABLE b_basic_percent NUMBER;
+	VARIABLE b_pf_percent NUMBER;
+	DECLARE
+	v_fname VARCHAR2(15);
+	v_emp_sal NUMBER(10);
+	BEGIN
+	:b_basic_percent:=45;
+	:b_pf_percent:=12;
+	SELECT first_name, salary 
+	INTO v_fname, v_emp_sal FROM employees 
+	WHERE employee_id=110;
+	select salary*0.45*0.12 into :b_pf_percent from employees where employee_id=110;
+	DBMS_OUTPUT.PUT_LINE('Hello'||' '||v_fname);
+	DBMS_OUTPUT.PUT_LINE('Your Salary is:'||v_emp_sal);
+	DBMS_OUTPUT.PUT_LINE('Your contribution towsrds pf is:'||:b_pf_percent);
+	END;
+	/
+	PRINT b_basic_percent
+	PRINT b_pf_percent
+
+
+
+
+
+

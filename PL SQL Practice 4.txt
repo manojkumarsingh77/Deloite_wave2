@@ -1,0 +1,42 @@
+1. SET SERVEROUTPUT ON
+    DECLARE
+        v_max_dept_no NUMBER;
+    BEGIN
+        select max(department_id) into v_max_dept_no from departments;
+        DBMS_OUTPUT.PUT_LINE('Maximum dept id:'||v_max_dept_no);
+    END;
+
+2.SET SERVEROUTPUT ON
+    DECLARE
+        v_max_dept_no NUMBER;
+        v_dept_name  departments.department_name%type:='Education';
+        v_dept_id NUMBER;
+
+    BEGIN
+        select max(department_id) into v_max_dept_no from departments;
+        DBMS_OUTPUT.PUT_LINE('Maximum dept id:'||v_max_dept_no);
+        v_max_dept_no:=v_max_dept_no+10;
+        v_dept_id:=v_max_dept_no;
+        insert into departments(department_name,department_id,location_id) values(v_dept_name,v_dept_id,null);
+        DBMS_OUTPUT.PUT_LINE('No of rows'||sql%rowcount);
+    END;
+    /
+     select * from departments where department_id=280;
+
+3.SET SERVEROUTPUT ON
+    DECLARE
+        v_max_dept_no NUMBER;
+        v_dept_name  departments.department_name%type:='Education';
+        v_dept_id NUMBER;
+
+    BEGIN
+        select max(department_id) into v_max_dept_no from departments;
+        DBMS_OUTPUT.PUT_LINE('Maximum dept id:'||v_max_dept_no);
+        v_max_dept_no:=v_max_dept_no+10;
+        v_dept_id:=v_max_dept_no;
+        update departments set location_id=3000 where department_id=280;
+       
+        DBMS_OUTPUT.PUT_LINE('No of rows'||sql%rowcount);
+    END;
+    /
+
