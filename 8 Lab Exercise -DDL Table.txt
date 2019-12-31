@@ -1,0 +1,77 @@
+Exercise 7 - Table Creation (DDL)
+_________________________________
+
+1.create table DEPT(
+                    id  number(7) primary key,
+                    name varchar2(25)
+                  );
+describe DEPT
+
+2.insert into DEPT select department_id,department_name from departments
+
+3.create table EMP(
+                    id          number(7),
+                    first_name  varchar2(25),
+                    last_name   varchar2(25),
+                    dept_id     number(7), 
+                    constraint E_D_FK foreign key(dept_id)
+                    references DEPT(id)
+                  );
+
+4.create table employees2 as
+select employee_id as id,first_name,last_name,salary,department_id as dept_id 
+from employees
+
+
+5.alter table employees2 read only
+
+
+6.insert into employees2
+  values(34, 'Grant', 'Marcie', 5678,10)
+  The execution of this query gives error
+
+
+7.alter table employees2 read write
+  insert into employees2(
+  values(34, 'Grant',' Marcie', 5678,10)
+
+8.drop table employees2
+
+
+Practice 1-1: Creating Other Schema Objects
+_______________________________________________
+
+Part 1
+
+
+1.create view employees_vu
+as select employee_id,last_name as EMPLOYEES,department_id from employees;
+
+
+2.describe employees_vu
+
+
+select * from employees_vu
+
+
+
+3.select department_id,EMPLOYEES from employees_vu
+
+4.create view dept_50 
+  as select employee_id as emp_no,last_name as EMPLOYEES,department_id as dept_no from employees 
+  where department_id=50
+  with read only;
+
+5.describe dept_50
+  select * from dept_50
+
+6.update dept_50 set dept_no=80 where EMPLOYEES='matos'   --->Throws an error as the view is read only
+
+
+10. create synonym EMP1 for employees
+
+
+
+
+
+
