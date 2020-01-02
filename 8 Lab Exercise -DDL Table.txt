@@ -68,6 +68,19 @@ select * from employees_vu
 6.update dept_50 set dept_no=80 where EMPLOYEES='matos'   --->Throws an error as the view is read only
 
 
+7.create sequence dept_id_seq2
+  start with 500
+  increment by 10
+  maxvalue 1000
+  nocache
+  nocycle;
+  
+8.insert into DEPT(ID,NAME) values(dept_id_seq2.nextval,'Education');
+  insert into DEPT(ID,NAME) values(dept_id_seq2.nextval,'Administration');
+
+9.create index dept_index on DEPT(NAME);
+
+
 10. create synonym EMP1 for employees
 
 
