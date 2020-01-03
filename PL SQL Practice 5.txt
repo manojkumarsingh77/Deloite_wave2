@@ -1,0 +1,33 @@
+1.create table message(Numbers number(2));
+
+	set serveroutput on;
+		begin
+		for i in 1..10 loop
+		if (i=6 or i=8)
+		then continue;
+		end if;
+		insert into message values(i);
+		end loop;
+		commit;
+		end;
+
+2.create table emp2 as select * from employees
+
+  	alter table emp2 add stars varchar2(50);
+
+	set serveroutput on;
+	declare
+	v_empno emp2.employee_id%type:=176;
+	v_asterisk emp2.stars%type:='';
+	v_sal emp2.salary%type;
+	begin
+	SELECT NVL(ROUND(salary/1000),0) INTO v_sal
+	FROM emp2
+	WHERE employee_id = v_empno;
+	FOR i IN 1..v_sal 
+	LOOP
+	v_asterisk:=concat(v_asterisk,'*');
+	END LOOP;
+	update emp2 set stars=v_asterisk where employee_id=176;
+	commit;
+	END;
